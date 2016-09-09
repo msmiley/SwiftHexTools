@@ -70,7 +70,16 @@ print(x.hexdump)
 ```
 
 ```
+00000  68 65 6C 6C 6F                                    hello             
+```
 
+```swift
+let x: Int = 32
+print(x.hex)
+```
+
+```
+20
 ```
 
 ## License
