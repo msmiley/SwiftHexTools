@@ -31,7 +31,7 @@ Returns a String with a single-line representation of strings/bytes to hex with 
 import SwiftHexTools
 
 let x: [UInt8] = Array(0...255)
-SwiftHexTools.hexdump(x)
+print(SwiftHexTools.hexdump(x))
 ```
 
 ```
@@ -57,7 +57,7 @@ SwiftHexTools.hexdump(x)
 import SwiftHexTools
 
 let x: [UInt8] = Array(0...255)
-SwiftHexTools.hexstream(x, offset: 0, length: 16, delimiter: " ")
+print(SwiftHexTools.hexstream(x, offset: 0, length: 16, delimiter: " "))
 ```
 
 ```
