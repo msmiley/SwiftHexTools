@@ -5,7 +5,7 @@ class SwiftHexToolsTests: XCTestCase {
   
   func testHexDumpBasic() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexdump(x),
+    XCTAssertEqual(SwiftHexTools.hexdump(x),
       // note the following includes some escaped characters, namely \" and \\
       "00000  00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F  ........  ........\n" +
       "00016  10 11 12 13 14 15 16 17  18 19 1A 1B 1C 1D 1E 1F  ........  ........\n" +
@@ -27,30 +27,30 @@ class SwiftHexToolsTests: XCTestCase {
   
   func testHexDumpWithLength() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexdump(x, offset: 0, length: 16),
+    XCTAssertEqual(SwiftHexTools.hexdump(x, offset: 0, length: 16),
       "00000  00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F  ........  ........\n")
   }
   
   func testHexDumpWithOffsetAndLength() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexdump(x, offset: 12, length: 16),
+    XCTAssertEqual(SwiftHexTools.hexdump(x, offset: 12, length: 16),
       "00012  0C 0D 0E 0F 10 11 12 13  14 15 16 17 18 19 1A 1B  ........  ........\n")
   }
   
   func testHexDumpWithShortLength() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexdump(x, offset: 12, length: 3),
+    XCTAssertEqual(SwiftHexTools.hexdump(x, offset: 12, length: 3),
       "00012  0C 0D 0E                                          ...               \n")
   }
 
   func testHexDumpWithEmptyArray() {
     let x: [UInt8] = []
-    XCTAssertEqual(SwiftHexTools().hexdump(x, offset: 12, length: 3), "")
+    XCTAssertEqual(SwiftHexTools.hexdump(x, offset: 12, length: 3), "")
   }
   
   func testHexDumpWithIntMultiline() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexdump(x, length: 137, showInt: true),
+    XCTAssertEqual(SwiftHexTools.hexdump(x, length: 137, showInt: true),
       "00000  00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F  ........  ........  000 001 002 003 004 005 006 007  008 009 010 011 012 013 014 015\n" +
       "00016  10 11 12 13 14 15 16 17  18 19 1A 1B 1C 1D 1E 1F  ........  ........  016 017 018 019 020 021 022 023  024 025 026 027 028 029 030 031\n" +
       "00032  20 21 22 23 24 25 26 27  28 29 2A 2B 2C 2D 2E 2F  .!\"#$%&'  ()*+,-./  032 033 034 035 036 037 038 039  040 041 042 043 044 045 046 047\n" +
@@ -64,12 +64,12 @@ class SwiftHexToolsTests: XCTestCase {
   
   func testHexStream() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexstream(x, offset: 0, length: 16), "000102030405060708090A0B0C0D0E0F")
+    XCTAssertEqual(SwiftHexTools.hexstream(x, offset: 0, length: 16), "000102030405060708090A0B0C0D0E0F")
   }
 
   func testHexStreamWithDelimiter() {
     let x: [UInt8] = Array(0...255)
-    XCTAssertEqual(SwiftHexTools().hexstream(x, offset: 0, length: 16, delimiter: ","), "00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F")
+    XCTAssertEqual(SwiftHexTools.hexstream(x, offset: 0, length: 16, delimiter: ","), "00,01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F")
   }
   
   func testStringHexDumpExtension() {
@@ -83,5 +83,15 @@ class SwiftHexToolsTests: XCTestCase {
   func testStringHexStreamExtension() {
     let x = "hello"
     XCTAssertEqual(x.hexstream, "68656C6C6F")
+  }
+
+  func testIntHexExtension() {
+    let x: Int = 32
+    XCTAssertEqual(x.hex, "20")
+  }
+  
+  func testUIntHexExtension() {
+    let x: UInt = 32
+    XCTAssertEqual(x.hex, "20")
   }
 }

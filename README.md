@@ -2,7 +2,7 @@
 
 Tools for working with hex in Swift. Useful when looking at raw buffers.
 
-Includes extensions to the String class to provide convenient access to these functions. Note that the String extension are currently parameter-less and perform the default operation.
+Includes extensions to the String, Int, and UInt types to provide convenient access to hex tools. Note that the extensions are currently parameter-less and perform the default operation.
 
 ## Functions
 
@@ -14,6 +14,12 @@ Returns a String with a hex-editor-like formatted rendering of the provided byte
 
 Returns a String with a single-line representation of strings/bytes to hex with an optional delimiter.
 
+## Extensions
+
+- String.hexdump
+- String.hexstream
+- Int.hex
+- UInt.hex
 
 ## Examples
 
@@ -21,7 +27,7 @@ Returns a String with a single-line representation of strings/bytes to hex with 
 import SwiftHexTools
 
 let x: [UInt8] = Array(0...255)
-SwiftHexTools().hexdump(x)
+SwiftHexTools.hexdump(x)
 ```
 
 ```
@@ -47,13 +53,21 @@ SwiftHexTools().hexdump(x)
 import SwiftHexTools
 
 let x: [UInt8] = Array(0...255)
-SwiftHexTools().hexstream(x, offset: 0, length: 16, delimiter: " ")
+SwiftHexTools.hexstream(x, offset: 0, length: 16, delimiter: " ")
 ```
 
 ```
 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ```
 
+```swift
+let x = "hello"
+print(x.hexdump)
+```
+
+```
+
+```
 
 ## License
 

@@ -6,13 +6,31 @@ import Foundation
 public extension String {
   
   var hexdump: String {
-    return SwiftHexTools().hexdump([UInt8](self.utf8))
+    return SwiftHexTools.hexdump([UInt8](self.utf8))
   }
 
   var hexstream: String {
-    return SwiftHexTools().hexstream([UInt8](self.utf8))
+    return SwiftHexTools.hexstream([UInt8](self.utf8))
   }
   
+}
+
+//
+// Extensions to native Int type
+//
+public extension Int {
+  var hex: String {
+    return String(self, radix: 16)
+  }
+}
+
+//
+// Extensions to native UInt type
+//
+public extension UInt {
+  var hex: String {
+    return String(self, radix: 16)
+  }
 }
 
 //
@@ -20,13 +38,11 @@ public extension String {
 //
 public struct SwiftHexTools {
   
-  public init() {}
-  
   //
   // Hex-dump representation of the given array of bytes. Uses optional offset
   // and length to subscript the array.
   //
-  public func hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = false) -> String {
+  public static func hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = false) -> String {
     var limit = length
     if length == 0 {
       limit = bytes.count
@@ -93,7 +109,7 @@ public struct SwiftHexTools {
   //
   // Hex stream of input bytes
   //
-  public func hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "") -> String {
+  public static func hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "") -> String {
     var limit = length
     if length == 0 {
       limit = bytes.count
