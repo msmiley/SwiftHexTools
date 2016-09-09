@@ -13,7 +13,7 @@ hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = fals
 Returns a String with a hex-editor-like formatted rendering of the provided bytes. Includes an integer (0 to 255) of the bytes if showInt is set to true.
 
 ```swift
-hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "")
+hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "") -> String
 ```
 
 Returns a String with a single-line representation of strings/bytes to hex with an optional delimiter.
