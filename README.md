@@ -6,11 +6,15 @@ Includes extensions to the String, Int, and UInt types to provide convenient acc
 
 ## Functions
 
-### hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = false) -> String
+```swift
+hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = false) -> String
+```
 
 Returns a String with a hex-editor-like formatted rendering of the provided bytes. Includes an integer (0 to 255) of the bytes if showInt is set to true.
 
-### hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "")
+```swift
+hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "")
+```
 
 Returns a String with a single-line representation of strings/bytes to hex with an optional delimiter.
 
