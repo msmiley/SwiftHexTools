@@ -19,12 +19,14 @@ public extension String {
 // Struct implementing main library members
 //
 public struct SwiftHexTools {
-
+  
+  public init() {}
+  
   //
   // Hex-dump representation of the given array of bytes. Uses optional offset
   // and length to subscript the array.
   //
-  func hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = false) -> String {
+  public func hexdump(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, showInt: Bool = false) -> String {
     var limit = length
     if length == 0 {
       limit = bytes.count
@@ -91,7 +93,7 @@ public struct SwiftHexTools {
   //
   // Hex stream of input bytes
   //
-  func hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "") -> String {
+  public func hexstream(_ bytes: [UInt8], offset: Int = 0, length: Int = 0, delimiter: String = "") -> String {
     var limit = length
     if length == 0 {
       limit = bytes.count
